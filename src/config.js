@@ -2,10 +2,15 @@
 
 const CONFIG = {
 
-    // ERROR MESSAGES
-    ERROR_MESSAGES_AND_STATUS: {
+    // ERROR STATUS CODES
+    ERROR_STATUS_CODES:{
         internalErrorCode: 500,
         methodInvalidErrorCode: 404,
+        successStatusCode:200,
+    },
+
+    // ERROR MESSAGES
+    ERROR_MESSAGES: {
         GenericInternalServerErrorMessage: {
           message: "Oops! It looks like something went wrong. We're sorry for the inconvenience.- 🤷🏼‍♂️ "       
         },
