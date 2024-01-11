@@ -7,10 +7,6 @@ const CONFIG = require("./config");
 // Middleware to parse JSON data in request body
 app.use(express.json());
 
-//Error Handler configure
-const  errorHandler = require('./middleware/errorHandler');
-app.use(errorHandler);
-
 // Routes forwarding
 const routes = require("./routes");
 app.use("/", routes);
@@ -20,6 +16,10 @@ app.use((req, res) => {
     res.status(CONFIG.ERROR_STATUS_CODES.methodInvalidErrorCode).send(CONFIG.ERROR_MESSAGES.methodInvalidErrorMessage);
     return;
 });
+
+//Error Handler configure
+const errorHandler = require('./middleware/errorHandler');
+app.use(errorHandler);
 
 
 // PORT CONFIG
