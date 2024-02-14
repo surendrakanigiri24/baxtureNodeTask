@@ -1,11 +1,20 @@
 const express = require("express");
-const router = express.Router();
+const multer = require('multer');
 const asyncHanlder = require('express-async-handler');
-const controller = require("../controller/fileController");
+const fileController = require("../controller/fileController");
+
+const router = express.Router();
+const upload = multer({ });
 
 // Sample route
 router.get( "/",
-    asyncHanlder(controller.sampleRoute)
+    asyncHanlder(fileController.sampleRoute)
+);
+
+// File upload route
+router.post("/uploadFile",
+    upload.single('file'),
+    asyncHanlder(fileController.fileUpload)
 );
 
 // Export
