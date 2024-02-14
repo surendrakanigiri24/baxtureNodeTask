@@ -8,4 +8,8 @@ router.post('/initiateAnalysis',
     asyncHanlder(analysisController.initiateAnalysis)
 );
 
+router.get('/:task_id',
+    asyncHanlder(analysisController.getAnalysisResults)
+);
+
 module.exports = router;

@@ -42,6 +42,26 @@ const initiateAnalysis = async(req,res) => {
 }
 
 
+// 
+// TO have analysis results based on task id
+const getAnalysisResults = async(req,res) => {
+    const { task_id } = req.params;
+
+    // 1. Input validation
+    if(!task_id){
+        res.status(config.ERROR_STATUS_CODES.incompleteData).json({ message: "Missing task_id param from body"});
+        return;
+    }
+
+    // 2. Generate results based on task
+    const analysisResults = await analysisService.doAnalysis(task_id);
+
+    // 3. Response to client
+    res.status(config.ERROR_STATUS_CODES.successStatusCode).json(analysisResults);
+    return;
+}
+
 module.exports = {
     initiateAnalysis,
+    getAnalysisResults,
 }

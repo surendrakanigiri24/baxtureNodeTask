@@ -1,5 +1,7 @@
+const config = require("../config");
 const fileModel = require("../clients/db/models/files.model");
 const analysisModel = require("../clients/db/models/analysis.model");
+const { countWords, countUniqueWords, findTopKWords } = require("./textAnalysis");
 
 
 // 
@@ -34,8 +36,45 @@ const createAnalysisTask = async (file_id, analysis_ops, options) => {
     
 }
 
+// 
+// doAnalysis
+const doAnalysis = async (task_id) => {
+    // 1. Checking for task 
+    const analysisTaskDetails = await analysisModel.findByPk(task_id);
+    if(analysisTaskDetails == null){
+        throw new Error('Task not found');
+    }
+
+    // 2. Having file data
+    const file = await fileModel.findByPk(analysisTaskDetails.file_id);
+    if (!file) {
+        throw new Error('File not found');
+    }
+
+    // 3. Converting buffer to text
+    const text = file.buffer.toString('utf8');
+
+    // 4. Switch case to perform analysis ops
+    switch (analysisTaskDetails.data.analysis_ops) {
+        case config.Analysis_Operations[0]:
+          results = await countWords(text);
+          break;
+        case config.Analysis_Operations[1]:
+          results = await countUniqueWords(text);
+          break;
+        case config.Analysis_Operations[2]:
+          results = await findTopKWords(text, analysisTaskDetails.data.options);
+          break;
+        default:
+          throw new Error('Invalid analysis operation');
+    }
+
+    // 5. Return results
+    return results;
+}
 
 module.exports = {
     lookUpForFileId,
     createAnalysisTask,
+    doAnalysis,
 }
