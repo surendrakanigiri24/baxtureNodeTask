@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Routes forwarding
 const routes = require("./routes/fileRoutes");
-app.use("/api/files/", routes);
+app.use("/api/", routes);
 
 // Catch-all route for non-existent routes
 app.use((req, res) => {
