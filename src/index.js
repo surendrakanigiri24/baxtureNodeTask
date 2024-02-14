@@ -9,8 +9,10 @@ const db = require("./clients/db/db");
 app.use(express.json());
 
 // Routes forwarding
-const routes = require("./routes/fileRoutes");
-app.use("/api/", routes);
+const fileRoutes = require("./routes/fileRoutes");
+const analysisRoutes = require("./routes/analysisRotes");
+app.use("/api/", fileRoutes);
+app.use("/api/analysis", analysisRoutes);
 
 // Catch-all route for non-existent routes
 app.use((req, res) => {
