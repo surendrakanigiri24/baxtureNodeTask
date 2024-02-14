@@ -26,7 +26,10 @@ const CONFIG = {
         methodInvalidErrorMessage: {
           message : "Oops! It seems like there's an issue with the way your request is being made. If the problem persists, our team is here to help!"
         }
-    }
+    },
+
+    // Analysis operations 
+    Analysis_Operations : ['countWords', 'countUniqueWords', 'findTopKWords'],
 }
 
 module.exports = CONFIG;
