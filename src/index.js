@@ -3,13 +3,14 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const CONFIG = require("./config");
+const db = require("./clients/db/db");
 
 // Middleware to parse JSON data in request body
 app.use(express.json());
 
 // Routes forwarding
-const routes = require("./routes");
-app.use("/", routes);
+const routes = require("./routes/fileRoutes");
+app.use("/api/files/", routes);
 
 // Catch-all route for non-existent routes
 app.use((req, res) => {
@@ -21,6 +22,8 @@ app.use((req, res) => {
 const errorHandler = require('./middleware/errorHandler');
 app.use(errorHandler);
 
+// DB sync
+db.sync();
 
 // PORT CONFIG
 const server = app.listen( PORT, () => {
