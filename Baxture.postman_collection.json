@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "95b08245-a43a-4bad-a282-b5d77a27491a",
+		"name": "Baxture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10448785",
+		"_collection_link": "https://gold-sunset-617630.postman.co/workspace/Bluetail~8667e602-b6b1-4c81-9aa9-176959f106be/collection/10448785-95b08245-a43a-4bad-a282-b5d77a27491a?action=share&source=collection_link&creator=10448785"
+	},
+	"item": [
+		{
+			"name": "Sample Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}",
+					"host": [
+						"{{host}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "surendra",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/krkdkt029/Downloads/node_js_backend_developer_assignment (1).txt",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/krkdkt029/Downloads/N860CB_FMS_SW_Version_1707401824.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/uploadFile",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"uploadFile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Initiate analysis",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"file_id\":\"cea342cc-bed6-419f-9528-da39bcb9129c\", \n    \"analysis_ops\":\"findTopKWords\", \n    \"options\":\"7\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}analysis/initiateAnalysis",
+					"host": [
+						"{{host}}analysis"
+					],
+					"path": [
+						"initiateAnalysis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAnalysisResults",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}analysis/1",
+					"host": [
+						"{{host}}analysis"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
