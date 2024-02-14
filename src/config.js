@@ -14,6 +14,8 @@ const CONFIG = {
         internalErrorCode: 500,
         methodInvalidErrorCode: 404,
         successStatusCode:200,
+        incompleteData:400,
+        dataCreatedCode:201,
     },
 
     // ERROR MESSAGES
