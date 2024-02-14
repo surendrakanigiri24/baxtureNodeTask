@@ -24,11 +24,27 @@ npm run lint
 
 
 ## Folder structure
-| Folder               | Description                                                      |
-| -------------------- | ---------------------------------------------------------------- |
-| src/                 | All the tools to construct the application                       |  
-| src/index.js         | Initial point from where the machine starts                      |
-| src/config           | All env variable can be accessed from here                       | 
+Text File Analysis System/
+├── src/
+│   ├── controllers/
+│   │   ├── fileController.js
+│   │   ├── analysisController.js
+│   ├── routes/
+│   │   ├── fileRoutes.js
+│   │   ├── analysisRoutes.js
+│   ├── services/
+│   │   ├── fileService.js
+│   │   ├── analysisService.js
+│   ├── clients/
+│   │   ├── db.js
+│   │   ├── models
+|   |   |   ├── files.js
+|   |   |   ├── analysis.js
+│   ├── index.js
+├── .gitignore
+├── package.json
+├── README.md
+
 
 
 
