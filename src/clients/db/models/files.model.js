@@ -17,7 +17,7 @@ const fileModel = sequelize.define('files',{
         allowNull: false
     },
     buffer: {
-        type: DataTypes.BLOB('long'),
+        type: DataTypes.BLOB,
         allowNull: false
     }
 });
