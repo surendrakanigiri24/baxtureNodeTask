@@ -35,6 +35,7 @@ Text File Analysis System/
 │   ├── services/
 │   │   ├── fileService.js
 │   │   ├── analysisService.js
+│   |   ├── textAnalysis.js
 │   ├── clients/
 │   │   ├── db.js
 │   │   ├── models
